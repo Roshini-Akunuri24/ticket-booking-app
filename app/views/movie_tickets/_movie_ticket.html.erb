@@ -1,0 +1,33 @@
+<div id="<%= dom_id movie_ticket %>">
+
+  <p>
+    <%= image_tag (movie_ticket.image.url)%>
+  </p>
+
+  <p>
+    <strong>Movie:</strong>
+    <%= movie_ticket.movie_name %>
+  </p>
+
+
+  <p>
+    <strong>From:</strong>
+    <%= movie_ticket.from %>
+  </p>
+
+  <p>
+    <strong>To:</strong>
+    <%= movie_ticket.to %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= movie_ticket.date %>
+  </p>
+
+  <p>
+    <strong>Place:</strong>
+    <%= movie_ticket.place %>
+  </p>
+
+</div>

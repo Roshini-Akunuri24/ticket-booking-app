@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand" href="http://localhost:3000/" > <%= image_tag "ticket_logo.jpg", width:100%></a>
+  <div class="dropdown">
+    <select name="place", id="place">
+      <option>Select Place</option>
+      <option value="Hyderabad" selected="selected">Hyderabad</option>
+      <option value="Warangal">Warangal</option>
+      <option value="Vijayawada">Vijayawada</option>
+    </select>
+  </div>
+    <a class="dropdown-item"><%=link_to "login",new_user_session_path, class:"btn btn-light"%></a>
+
+</nav>
+<div class="movies">
+  <%= image_tag "raya.jpg", width:250%>
+  <%= image_tag "encanto.jpg", width:250%>
+  <%= image_tag "titanic.jpg", width:252.3%>
+  <%= image_tag "holiday.jpg", width:270%>
+  <%=link_to "More Movies", new_user_session_path%>
+</div>

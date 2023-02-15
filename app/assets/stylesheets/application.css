@@ -1,0 +1,113 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.login{
+    text-align: center;
+  background-image: url(movie-ticketing5.jpg);
+  height: 515px;
+  width: 100%;
+  
+  
+}
+
+img.movie_ticket-show{
+  width: 400px;
+  height: 300px;
+}
+
+.movie_ticket-box{ 
+  border: 1px solid rgb(219, 217, 217); 
+  margin-bottom: 20px;
+  height: 600px;
+  text-align: center;
+  /* width: 300px; */
+  box-shadow: rgba(229, 226, 226, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Catamaran', sans-serif;
+	
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #194058; 
+}
+
+::-webkit-scrollbar-thumb {
+  background:#0c0c0c; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.content-container {
+  
+    position: absolute;
+    font-size: small;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding-left: 100px;
+    padding-bottom: 30px;
+    background-image: linear-gradient(180deg, transparent, #0c2738);
+    animation: slide 60s linear infinite;
+}
+
+header{
+	background: #000304;
+	padding: 80px;
+}
+
+.nav{
+	float: right;
+	margin-top: -8px;
+}
+.nav ul li{
+	list-style: none;
+	float: left;
+	padding: 20px;
+}
+.nav ul li a{
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+	color: #899ead;
+}
+.nav ul li a:hover{
+	color: white;
+}
+.active a:hover{
+	color: white!important;
+	border-bottom: 2px solid #e10e0e!important;
+	padding-bottom: 27px;
+}
+
+
+
+
+
+
+
+

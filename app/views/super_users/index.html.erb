@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Super users</h1>
+
+<div id="super_users">
+  <% @super_users.each do |super_user| %>
+    <%= render super_user %>
+    <p>
+      <%= link_to "Show this super user", super_user %>
+    </p>
+  <% end %>
+</div>
+
+

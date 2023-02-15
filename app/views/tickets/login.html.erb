@@ -1,0 +1,41 @@
+<header id="myHeader">
+	<div class="container">
+  <h1 style="color:white"> <%= image_tag "ticket_logo.jpg", width:90%> BookMyTicket </h2>
+		<div class="nav">
+      <ul>
+        <% if current_user%>
+          <p style="color: white">hello <%=current_user.email%></p>
+          <p style="color: white"> welcome to the application, you are a <%=current_user.role%></p>
+          <%if current_user.role=="admin"%>
+            <%=link_to "All Movies", movie_tickets_path, class:"btn btn-danger"%>
+          <%end%>
+      
+          <%if current_user.role=="super_user"%>
+            <%=link_to "All Movies", movie_tickets_path, class:"btn btn-danger"%>
+            <%=link_to "Add admin users", admin_users_path, class:"btn btn-danger"%>
+          <%end%>
+      
+          <%if current_user.role=="user"%>
+            <%=link_to "All Movies", movie_tickets_path, class:"btn btn-danger"%>
+          <%end%>
+        <%else%>
+            <li class="active"><a href="#"><%=link_to "Home",films_open_path%></a></li> 
+            <li class="active"><a href="#"> <%=link_to "Sign In", new_user_session_path%></a></li>
+            <li class="active"><a href="#"><%=link_to "Sign Up", new_user_registration_path%></a></li> 
+          </div>
+        <%end%>
+          
+      </ul>
+    </div>
+		<i class="fa fa-bars mob-menu"></i>
+    </div>
+	</div>
+</header>
+
+<div class="login">
+  <div class="content-container">
+    <h1 style="color: gray">CopyRights @BookMyTicket</h1>
+  </div>
+</div>
+
+

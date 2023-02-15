@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: MyString
+  departure: 2023-02-11 12:16:29
+  from: MyString
+  to: MyString
+  num_max: 1
+
+two:
+  company_name: MyString
+  departure: 2023-02-11 12:16:29
+  from: MyString
+  to: MyString
+  num_max: 1

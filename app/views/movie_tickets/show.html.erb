@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @movie_ticket %>
+
+<div>
+  <% if current_user.role == 'admin' || current_user.role == 'super_user' %>
+    <%= link_to "Edit this movie ticket", edit_movie_ticket_path(@movie_ticket) %> |
+    <%= link_to "Back to movie tickets", movie_tickets_path %> 
+    <%= button_to "Destroy this movie ticket", @movie_ticket, method: :delete %>
+  <%else%>
+    <%= link_to "Back to movie tickets", movie_tickets_path %> |
+    <%= link_to "checkout" %>
+  <% end %>
+</div>

@@ -1,0 +1,42 @@
+<div>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand" href="http://localhost:3000/" > <%= image_tag "ticket_logo.jpg", width:100%></a>
+  <div class="dropdown">
+    <select id="place">
+    <a href="#"> <option value=""></option></a>
+      <option value="1" selected="selected">Hyderabad</option>
+      <option value="2">Warangal</option>
+      <option value="3">Vijayawada</option>
+    </select>
+  </div>
+  <ul class="nav navbar-nav ms-auto">
+  <li class="nav-item dropdown">
+      <a href="#" class="nav-link dropdown-toggle btn btn-light" data-bs-toggle="dropdown">Profile</a>
+      <div class="dropdown-menu dropdown-menu-end">
+          <a href="http://localhost:3000/users/edit" class="dropdown-item">edit</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
+      </div>
+  </li>
+</ul>
+</nav>
+</div>
+
+<div class="row">
+  <% @movie_tickets.each do |movie_ticket|%>
+    <div class="col-md-3">
+      <div class="movie_ticket-box">
+        <%= render movie_ticket %>
+         | <%= link_to "Show", movie_ticket%> | 
+      </div>
+    </div>
+  <%end%>
+</div><br> 
+<div class="text-center">
+  <%= paginate @movie_tickets %>
+</div>
+
+<% if current_user.role == 'admin' || current_user.role == 'super_user' %>
+  <%= link_to "Location", locations_home_path %> | <br>
+  <%= link_to "Add movie ticket", new_movie_ticket_path %> 
+<% end %>
