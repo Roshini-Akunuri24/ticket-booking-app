@@ -5,8 +5,7 @@ class MovieTicketsController < ApplicationController
 
   # GET /movie_tickets or /movie_tickets.json
   def index
-    @movie_tickets = MovieTicket.all
-    @movie_tickets = MovieTicket.order(:movie_name).page params[:page]
+    @movie_tickets = MovieTicket.all.paginate(page: params[:page], per_page: 4)
   end
 
   # GET /movie_tickets/1 or /movie_tickets/1.json

@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
@@ -18,14 +17,7 @@
     text-align: center;
   background-image: url(movie-ticketing5.jpg);
   height: 515px;
-  width: 100%;
-  
-  
-}
-
-img.movie_ticket-show{
-  width: 400px;
-  height: 300px;
+  width: 100%; 
 }
 
 .movie_ticket-box{ 
@@ -35,6 +27,7 @@ img.movie_ticket-show{
   text-align: center;
   /* width: 300px; */
   box-shadow: rgba(229, 226, 226, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  
 }
 
 *{
@@ -43,7 +36,6 @@ img.movie_ticket-show{
 	font-family: 'Catamaran', sans-serif;
 	
 }
-
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -62,8 +54,7 @@ img.movie_ticket-show{
   background: #555; 
 }
 
-.content-container {
-  
+.content-container { 
     position: absolute;
     font-size: small;
     left: 0px;
@@ -84,20 +75,24 @@ header{
 	float: right;
 	margin-top: -8px;
 }
+
 .nav ul li{
 	list-style: none;
 	float: left;
 	padding: 20px;
 }
+
 .nav ul li a{
 	color: white;
 	text-decoration: none;
 	font-size: 18px;
 	color: #899ead;
 }
+
 .nav ul li a:hover{
 	color: white;
 }
+
 .active a:hover{
 	color: white!important;
 	border-bottom: 2px solid #e10e0e!important;

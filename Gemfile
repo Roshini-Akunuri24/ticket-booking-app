@@ -26,7 +26,7 @@ gem 'carrierwave'
 
 gem 'jquery-rails'
 
-gem 'kaminari'
+gem 'will_paginate'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
