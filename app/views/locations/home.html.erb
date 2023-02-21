@@ -1,4 +1,0 @@
-<%= form_with(model: @location) do |form| %>
-    <%= form.label :location_id %>
-    <%= form.select :location_id, Location.all.map { |l| [l.name, l.id] } %>
-<% end %>

@@ -1,9 +1,12 @@
 class AdminUsersController < ApplicationController
   before_action :set_admin_user, only: %i[ show edit update destroy ]
 
+
+
   # GET /admin_users or /admin_users.json
   def index
     @admin_users = AdminUser.all
+    @movie_tickets = MovieTicket.all.paginate(page: params[:page], per_page: 6)
   end
 
   # GET /admin_users/1 or /admin_users/1.json

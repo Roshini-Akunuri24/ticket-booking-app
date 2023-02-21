@@ -1,0 +1,9 @@
+<% @theatres.each do |theatre|%>
+    <div class="theatre">
+      <%= render theatre %>
+      | <%= link_to "Show", theatre%> | 
+    </div>
+<%end%>
+<% if current_user.role == 'admin' || current_user.role == 'super_user' %>
+    <%= link_to "Add theatre", new_theatre_path %> 
+<% end %>

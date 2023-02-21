@@ -63,3 +63,7 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+      sessions:
+      signed_in: 'Signed in successfully.'
+      signed_in_first_time: "MY CUSTOM WELCOME GREETING."
+      signed_out: 'Signed out successfully.'

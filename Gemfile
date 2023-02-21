@@ -20,8 +20,6 @@ gem "importmap-rails"
 
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
-gem 'cancancan'
-
 gem 'carrierwave'
 
 gem 'jquery-rails'
@@ -82,3 +80,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'elasticsearch', '~> 7.17.7'
+gem 'searchkick', '~> 5.1'
+
+gem 'pry'

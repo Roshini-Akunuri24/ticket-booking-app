@@ -1,0 +1,9 @@
+<% @shows.each do |show|%>
+    <div class="show">
+      <%= render show %>
+      | <%= link_to "Show", show%> | 
+    </div>
+<%end%>
+<% if current_user.role == 'admin' || current_user.role == 'super_user' %>
+    <%= link_to "Add show", new_show_path %> 
+  <% end %>

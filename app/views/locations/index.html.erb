@@ -1,0 +1,9 @@
+<% @locations.each do |location|%>
+    <div class="location">
+      <%= render location %>
+      | <%= link_to "Show", location%> | 
+    </div>
+<%end%>
+<% if current_user.role == 'admin' || current_user.role == 'super_user' %>
+    <%= link_to "Add location", new_location_path %> 
+<% end %>

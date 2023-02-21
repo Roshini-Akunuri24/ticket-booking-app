@@ -1,36 +1,9 @@
-<%= form_with model: @theater, local: true do |form| %>
-    <% if @theater.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@theater.errors.count, "error") %> prohibited this theater from being saved:</h2>
-        <ul>
-          <% @theater.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  
-    <div class="field">
-      <%= form.label :location %>
-      <%= form.text_field :location %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :number_of_shows %>
-      <%= form.text_field :number_of_shows %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :films_played %>
-      <%= form.text_field :films_played %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :timings %>
-      <%= form.text_field :timings %>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
+<h1>New theatre</h1>
+
+<%= render "form", theatre: @theatre %>
+
+<br>
+
+<div>
+  <%= link_to "Back to theatre", theatres_path %>
+</div>

@@ -12,11 +12,11 @@
 
           <%if current_user.role=="super_user"%>
             <%=link_to "All Movies", movie_tickets_path, class:"btn btn-danger"%>
-            <%=link_to "Add admin users", admin_users_path, class:"btn btn-danger"%>
+            <%=link_to "Add admin users", movie_tickets_path, class:"btn btn-danger"%>
           <%end%>
 
           <%if current_user.role=="user"%>
-            <%=link_to "All Movies", movie_tickets_path, class:"btn btn-danger"%>
+            <%=link_to "Book Movies", movie_tickets_path, class:"btn btn-danger"%>
           <%end%>
         <%else%>
             <li class="active"><a href="#"> <%=link_to "Sign In", new_user_session_path%></a></li>
@@ -30,7 +30,7 @@
 
 <div class="login">
   <div class="content-container">
-    <h1 style="color: gray">CopyRights @BookMyTicket</h1>
+    <h1 class="copyright">copyrights @BookMyTicket</h1>
   </div>
 </div>
 

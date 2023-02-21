@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_170659) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_21_054656) do
   create_table "admin_users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -33,13 +33,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_170659) do
 
   create_table "movie_tickets", force: :cascade do |t|
     t.string "movie_name"
-    t.string "from"
-    t.string "to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.string "place"
     t.date "date"
+    t.integer "location_id"
+    t.integer "show_id"
+    t.integer "theatre_id"
+    t.index ["location_id"], name: "index_movie_tickets_on_location_id"
+    t.index ["show_id"], name: "index_movie_tickets_on_show_id"
+    t.index ["theatre_id"], name: "index_movie_tickets_on_theatre_id"
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.string "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "super_users", force: :cascade do |t|
@@ -50,9 +59,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_170659) do
 
   create_table "theatres", force: :cascade do |t|
     t.string "name"
-    t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "location_id"
+    t.string "timings"
+    t.index ["location_id"], name: "index_theatres_on_location_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -80,4 +91,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_170659) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "movie_tickets", "locations"
+  add_foreign_key "movie_tickets", "shows"
+  add_foreign_key "movie_tickets", "theatres"
+  add_foreign_key "theatres", "locations"
 end

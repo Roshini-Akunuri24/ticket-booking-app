@@ -16,15 +16,6 @@
     <%= form.text_field :movie_name %>
   </div>
 
-  <div>
-    <%= form.label :from, style: "display: block" %>
-    <%= form.text_field :from %>
-  </div>
-
-  <div>
-    <%= form.label :to, style: "display: block" %>
-    <%= form.text_field :to %>
-  </div>
 
   <div>
     <%= form.label :Date, style: "display: block" %>
@@ -32,8 +23,13 @@
   </div>
 
   <div>
-    <%= form.label :Place, style: "display: block" %>
-    <%= form.text_field :place %>
+    <%= form.label :Show, style: "display: block" %>
+    <%= form.select :show_id, options_for_select(Show.all.map { |sho| [sho.time, sho.id] }) %>
+  </div>
+
+  <div>
+    <%= form.label :location, style: "display: block" %>
+    <%= select_tag "location", options_from_collection_for_select(Location.all, "name", "name") %>
   </div>
 
   <div>
