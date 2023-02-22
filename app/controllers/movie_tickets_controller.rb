@@ -1,23 +1,23 @@
 class MovieTicketsController < ApplicationController
   before_action :set_movie_ticket, only: %i[ show edit update destroy ]
 
-
-
   # GET /movie_tickets or /movie_tickets.json
   def index
     @movie_tickets = MovieTicket.all.paginate(page: params[:page], per_page: 6)
-    # @movie_tickets=MovieTicket.all
-    if params[:location] == "Hyderabad"
-      @movie_tickets=MovieTicket.where(location: { name: "Hyderabad" }).paginate(page: params[:page], per_page: 2)
-    elsif params[:location] == "Warangal"
-      @movie_tickets=MovieTicket.where(location: { name: "Warangal" }).paginate(page: params[:page], per_page: 2)
-    elsif params[:location] == "Vijayawada"
-      @movie_tickets=MovieTicket.where(location: { name: "Vijayawada" }).paginate(page: params[:page], per_page: 2)
+    @location = Location.find(params[:location]).name if params[:location]
+    if @location == "Hyderabad"
+      @movie_tickets = MovieTicket.where(location: params[:location]).paginate(page: params[:page], per_page: 2)
+    elsif @location == "Warangal"
+      @movie_tickets = MovieTicket.where(location: params[:location]).paginate(page: params[:page], per_page: 2)
+    elsif @location == "Vijayawada"
+      @movie_tickets = MovieTicket.where(location: params[:location]).paginate(page: params[:page], per_page: 2)
     end
   end
 
   # GET /movie_tickets/1 or /movie_tickets/1.json
   def show 
+    @theatre=Theatre.find(params[:theatre_id]) if params[:theatre_id]
+    @movie_ticket=MovieTicket.find(params[:id])
   end
   
   # def sort_by_location
@@ -87,6 +87,6 @@ class MovieTicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_ticket_params
-      params.require(:movie_ticket).permit(:movie_name, :date, :image, :location_id, :show_id)
+      params.require(:movie_ticket).permit(:movie_name, :date, :image, :location_id, :show_id, :theatre_id)
     end
 end

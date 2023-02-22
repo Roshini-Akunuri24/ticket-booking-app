@@ -63,6 +63,6 @@ class TheatresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def theatre_params
-      params.require(:theatre).permit(:name, :location_id, :movie_ticket_id, :show_id, :timings)
+      params.require(:theatre).permit(:name, :timings)
     end
 end

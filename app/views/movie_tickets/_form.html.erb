@@ -28,8 +28,13 @@
   </div>
 
   <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= select_tag "location", options_from_collection_for_select(Location.all, "name", "name") %>
+  <%= form.label :Location, style: "display: block" %>
+  <%= form.select :location_id, options_for_select(Location.all.map { |loc| [loc.name, loc.id] }) %>
+</div>
+
+  <div>
+    <%= form.label :Theatre, style: "display: block" %>
+    <%= form.select "theatre_id", options_for_select(Theatre.all.map { |theat| [theat.name, theat.id] }) %>
   </div>
 
   <div>

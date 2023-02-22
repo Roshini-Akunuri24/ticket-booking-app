@@ -4,10 +4,11 @@
 		<div class="nav">
       <ul>
         <% if current_user%>
-          <p style="color: white">hello <%=current_user.email%></p>
-          <p style="color: white"> welcome to the application, you are a <%=current_user.role%></p>
           <%if current_user.role=="admin"%>
-            <%=link_to "All Movies", movie_tickets_path, class:"btn btn-danger"%>
+            <%=link_to "User View", movie_tickets_path, class:"btn btn-danger"%>
+            <%=link_to "Add Movies", new_movie_ticket_path, class:"btn btn-danger"%>
+            <%=link_to "Shows", shows_path, class:"btn btn-danger"%>  
+            <%= link_to "Theatres", theatres_path, class: "btn btn-danger" %>
           <%end%>
 
           <%if current_user.role=="super_user"%>
@@ -16,7 +17,7 @@
           <%end%>
 
           <%if current_user.role=="user"%>
-            <%=link_to "All Movies", movie_tickets_path, class:"btn btn-danger"%>
+            <%=link_to "Explore Movies", movie_tickets_path, class:"btn btn-danger"%>
           <%end%>
         <%else%>
             <li class="active"><a href="#"> <%=link_to "Sign In", new_user_session_path%></a></li>
@@ -27,13 +28,14 @@
   </div>
 </header>
 
-<div class="row">
-  <% @movie_tickets.each do |movie_ticket|%>
-    <div class="col-md-4">
-      <div class="movie_ticket-box">
-        <%= render movie_ticket %>
-      </div>
-    </div>
-  <%end%>
-</div>
 
+  <div class="row">
+    <% @movie_tickets.each do |movie_ticket|%>
+      <div class="col-md-4">
+        <div class="movie_ticket-box">
+          <%= render movie_ticket %>
+          <%= link_to "Show", new_user_session_path %>
+        </div>
+      </div>
+    <%end%>
+  </div>
