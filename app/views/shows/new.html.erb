@@ -20,12 +20,11 @@
     </ul>                    
   </nav>
 </div>
-<h1>New show</h1>
-
-<%= render "form", show: @show %>
-
-<br>
-
-<div>
-  <%= link_to "Back to show", shows_path %>
+<div class = "text-center">
+  <h1>New show</h1>
+  <%= render "form", show: @show %>
+  <br>
+  <div>
+    <%= link_to "Back to show", shows_path %>
+  </div>
 </div>

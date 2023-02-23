@@ -2,6 +2,7 @@ class TheatresController < ApplicationController
      # GET /theatres or /theatres.json
   def index
     @theatres = Theatre.all
+    
   end
 
   # GET /theatres/1 or /theatres/1.json
@@ -16,6 +17,7 @@ class TheatresController < ApplicationController
 
   # GET /theatres/1/edit
   def edit
+    @theatre = Theatre.find(params[:id])
   end
 
   # POST /theatres or /theatres.json

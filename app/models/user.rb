@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+  validates :name, :email, :phone_number, presence: true 
   # has_many :movie_tickets
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

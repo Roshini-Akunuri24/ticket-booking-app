@@ -20,16 +20,7 @@ class MovieTicketsController < ApplicationController
     @movie_ticket=MovieTicket.find(params[:id])
   end
   
-  # def sort_by_location
-  #   @movie_tickets=MovieTicket.all
-  #   if params[:name] == "Hyderabad"
-  #     @movie_tickets=@movie_tickets.where(location: { name: "Hyderabad" })
-  #   elsif params[:name] == "Warangal"
-  #     @movie_tickets=@movie_tickets.where(location: { name: "Warangal" })
-  #   elsif params[:name] == "Vijayawada"
-  #     @movie_tickets=@movie_tickets.where(location: { name: "Vijayawada" })
-  #   end
-  # end
+
 
 
   # GET /movie_tickets/new

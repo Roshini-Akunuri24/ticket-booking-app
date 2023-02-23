@@ -4,6 +4,7 @@ class ShowsController < ApplicationController
     end
 
     def show 
+      @show = Show.find(params[:id])
     end
 
     def new
@@ -12,6 +13,7 @@ class ShowsController < ApplicationController
     
       # GET /movie_tickets/1/edit
       def edit
+        @show = Show.find(params[:id])
       end
     
       # POST /movie_tickets or /movie_tickets.json

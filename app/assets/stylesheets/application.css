@@ -32,18 +32,6 @@
   margin-left: 90px ;
 }
 
-.theatre-box{ 
-  border: 1px solid rgb(255, 255, 255); 
-  margin-bottom: 20px;
-  margin-top: 20px;
-  height: 477px;
-  text-align: center;
-  width: 300px;
-  border-radius: 10px;
-  margin-left: 90px ;
-  box-shadow: rgba(229, 226, 226, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
 /* .img.movie_ticket-box{
   margin-top: 10px;
 } */

@@ -1,10 +1,12 @@
-<h1>Editing movie ticket</h1>
+<div class = "text-center">    
+  <h1>Editing movie ticket</h1>
 
-<%= render "form", movie_ticket: @movie_ticket %>
+  <%= render "form", movie_ticket: @movie_ticket %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this movie ticket", @movie_ticket %> |
-  <%= link_to "Back to movie tickets", movie_tickets_path %>
+  <div>
+    <%= link_to "Show this movie ticket", @movie_ticket %> |
+    <%= link_to "Back to movie tickets", movie_tickets_path %>
+  </div>
 </div>

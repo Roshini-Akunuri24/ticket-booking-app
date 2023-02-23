@@ -1,4 +1,5 @@
-<%= form_with(model: show) do |form| %>
+<div class = "text-center">
+  <%= form_with(model: show) do |form| %>
     <% if show.errors.any? %>
       <div style="color: red">
         <h2><%= pluralize(show.errors.count, "error") %> prohibited this show from being saved:</h2>
@@ -22,4 +23,6 @@
       <%= form.submit %>
     </div>
   <% end %>
+</div>
+  
   

@@ -32,10 +32,11 @@
 </div>
  
 <% if current_user.role == 'admin' || current_user.role == 'super_user' %>
-  <%= link_to "Location", locations_path %> | 
-  <%= link_to "Add movie ticket", new_movie_ticket_path %> | <br>
-  <%= link_to "Add theater", theatres_path %> | 
-  <%= link_to "Add Show-timings", shows_path %>  
+  <%= link_to "Location", locations_path, class: "btn btn-dark" %> 
+  <%= link_to "Add movie ticket", new_movie_ticket_path, class: "btn btn-dark" %>  <br> <br/>
+  <%= link_to "Add theater", theatres_path, class: "btn btn-dark" %>   
+  <%= link_to "Add Show-timings", shows_path, class: "btn btn-dark" %> 
+   
 <% end %>
 
 <div class = "mx-auto" style="width: 200px;">

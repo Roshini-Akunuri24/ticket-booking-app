@@ -19,18 +19,19 @@
     </ul>                    
   </nav>
 </div>
+<div class = "text-center">
+  <p style="color: green"><%= notice %></p>
 
-<p style="color: green"><%= notice %></p>
+  <%= render @theatre %>
 
-<%= render :partial => 'theatre', :locals => {:theatre => @theatre} %>
-
-<div>
-  <% if current_user.role == 'admin' || current_user.role == 'super_user' %>
-    <%= link_to "Edit this theatre", edit_theatre_path(@theatre)%> |
-    <%= link_to "Back to theatre home", theatres_path %> <br></br>
-    <%= button_to "Destroy this movie ticket", @theatre, method: :delete %>
-  <%else%>
-    <%= link_to "Back to theatre", movie_tickets_path, class: "btn btn-dark" %> |
-    <%= link_to "Book Ticket", theatres_path, class: "btn btn-dark"%>
-  <% end %>
+  <div>
+    <% if current_user.role == 'admin' || current_user.role == 'super_user' %>
+      <%= link_to "Edit this theatre", edit_theatre_path(@theatre)%> |
+      <%= link_to "Back to theatre home", theatres_path %> <br></br>
+      <%= button_to "Destroy this movie ticket", @theatre, method: :delete %>
+    <%else%>
+      <%= link_to "Back to theatre", movie_tickets_path, class: "btn btn-dark" %> |
+      <%= link_to "Book Ticket", theatres_path, class: "btn btn-dark"%>
+    <% end %>
+  </div>
 </div>

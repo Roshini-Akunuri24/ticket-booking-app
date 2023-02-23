@@ -20,13 +20,11 @@
   </nav>
 </div>
 
-<div class="row">
+<div class="text-center">
   <% @theatres.each do |theatre|%>
-    <div class="col-md-4" ">
-      <div class="theatre"> <br>
-        <%= render theatre %>
-        <%= link_to "show", theatre%> 
-      </div>
+    <div class="theatre"> <br>
+      <%= render theatre %>
+      <%= link_to "show", theatre%> 
     </div>
   <% end %>
 </div>

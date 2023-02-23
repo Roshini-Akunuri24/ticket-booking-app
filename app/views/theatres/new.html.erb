@@ -19,13 +19,14 @@
     </ul>                    
   </nav>
 </div>
+<div class = "txt-center">
+  <h1>New theatre</h1>
 
-<h1>New theatre</h1>
+  <%= render "form", theatre: @theatre %>
 
-<%= render "form", theatre: @theatre %>
+  <br>
 
-<br>
-
-<div>
-  <%= link_to "Back to theatre", theatres_path %>
+  <div>
+    <%= link_to "Back to theatre", theatres_path %>
+  </div>
 </div>

@@ -5,6 +5,7 @@ class LocationsController < ApplicationController
     end
 
     def show 
+      @location = Location.find(params[:id])
     end
 
     def new
@@ -13,6 +14,7 @@ class LocationsController < ApplicationController
     
       # GET /movie_tickets/1/edit
       def edit
+        @location = Location.find(params[:id])
       end
     
       # POST /movie_tickets or /movie_tickets.json

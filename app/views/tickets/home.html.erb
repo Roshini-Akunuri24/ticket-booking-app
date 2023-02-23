@@ -9,6 +9,7 @@
             <%=link_to "Add Movies", new_movie_ticket_path, class:"btn btn-danger"%>
             <%=link_to "Shows", shows_path, class:"btn btn-danger"%>  
             <%= link_to "Theatres", theatres_path, class: "btn btn-danger" %>
+            <%= link_to "Locations", locations_path, class: "btn btn-danger" %>  
           <%end%>
 
           <%if current_user.role=="super_user"%>

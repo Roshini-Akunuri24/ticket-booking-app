@@ -51,8 +51,6 @@ gem "tzinfo-data"
 gem "bootsnap", require: false
 
 
-gem 'rspec-rails'
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 

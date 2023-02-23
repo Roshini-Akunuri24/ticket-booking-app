@@ -19,7 +19,12 @@
     </ul>                    
   </nav>
 </div>
+<div class = "text-center">
+  <p style="color: green"><%= notice %></p>
 
-<p style="color: green"><%= notice %></p>
+  <%= render @show %>
 
-<%= render @show %>
+  <%= link_to "Edit", edit_show_path(@show), class: "btn btn-dark" %> <br> <br/>
+  <%= link_to "Back to view", shows_path, class: "btn btn-dark" %> <br> <br/>
+  <%= button_to "Destroy", @show, method: :delete, class: "btn btn-dark" %>
+</div>
