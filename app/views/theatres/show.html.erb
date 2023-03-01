@@ -4,7 +4,7 @@
     <div class="dropdown">
       <%= form_with url: movie_tickets_path, method: :get do |form| %>
         <%= form.select :location, options_for_select(Location.all.map{|loc| [loc.name, loc.id]}.insert(0,"Hyderabad")) %>
-        <%= form.submit%>
+        <%= form.submit "check", class: "btn btn-dark"%>
       <% end %>
     </div>
     <ul class="nav navbar-nav ms-auto">
@@ -20,18 +20,17 @@
   </nav>
 </div>
 <div class = "text-center">
-  <p style="color: green"><%= notice %></p>
-
   <%= render @theatre %>
 
   <div>
-    <% if current_user.role == 'admin' || current_user.role == 'super_user' %>
-      <%= link_to "Edit this theatre", edit_theatre_path(@theatre)%> |
-      <%= link_to "Back to theatre home", theatres_path %> <br></br>
-      <%= button_to "Destroy this movie ticket", @theatre, method: :delete %>
-    <%else%>
+    <% if current_user %>
       <%= link_to "Back to theatre", movie_tickets_path, class: "btn btn-dark" %> |
       <%= link_to "Book Ticket", theatres_path, class: "btn btn-dark"%>
+    <% else %>
+      <%= link_to "Edit", edit_theatre_path(@theatre), class: "btn btn-dark" %> <br> <br/>
+      <%= link_to "Back to view", theatres_path, class: "btn btn-dark" %> <br> <br/>
+      <%= button_to "Destroy", @theatre, method: :delete, class: "btn btn-dark" %>
     <% end %>
   </div>
 </div>
+

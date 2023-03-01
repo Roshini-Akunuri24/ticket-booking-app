@@ -1,38 +1,74 @@
 <div>
   <nav class="navbar navbar-expand-lg navbar-light bg-dark" style= "margin-inline-end: -15px;">
     <a class="navbar-brand" style= "margin-inline-start: 10px;" href="http://localhost:3000/" > <%= image_tag "ticket_logo.jpg", width:60%></a>
-    <div class="dropdown">
-      <%= form_with url: movie_tickets_path, method: :get do |form| %>
-        <%= form.select :location, options_for_select(Location.all.map{|loc| [loc.name, loc.id]}.insert(0,"Hyderabad")) %>
-        <%= form.submit%>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="dropdown">
+        <%= form_with url: movie_tickets_path, method: :get do |form| %>
+          <%= form.select :location, options_for_select(Location.all.map{|loc| [loc.name, loc.id]}.insert(0,"Hyderabad")) %>
+          <%= form.submit "check", class: "btn btn-dark"%>
+        <% end %>
+      </div>
+    <% end %>
     <ul class="nav navbar-nav ms-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle btn btn-light" data-bs-toggle = "dropdown" style= "margin-inline-end: 20px;">Profile</a>
         <div class="dropdown-menu dropdown-menu-end">
-          <a href="http://localhost:3000/admin_user/users/edit" class="dropdown-item">edit</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
+          <% if user_signed_in? %>
+            <a href="http://localhost:3000/admin_user/users/edit" class="dropdown-item">edit</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
+          <% else %>
+            <a class="dropdown-item"><%=button_to "login",user_session_path, class:"btn bg-transparent"%></a>
+          <% end %>
         </div>
       </li>
     </ul>                    
   </nav>
 </div>
 
-<div class = "text-center"
-  <p style="color: black"><%= notice %></p>
+<p style="color: black"><%= notice %></p>
 
+<div class = "movie-show">
   <%= render @movie_ticket %>
+</div>
+<div class = "text-center">
+  <h6> <%= @movie_ticket.movie_name %></h6>
+
+  <% @theatres.each do |theatre| %>
+    <%= theatre.name %>
+  <% end %>
+
+    <% @shows.each do |show| %>
+      <%= show.time %>
+    <% end %>  
+</div>
+
+  <div class = "seats-avail">
+    <% @available_seats.each do |seat| %>
+        <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "available-seat", class: "btn btn-danger" %>
+    <% end %>
+  </div>  
+   <br>
+  
+  <div class = "seats-booked">
+    <h6> Seats Booked </h6>
+    <% @unavailable_seats.each do |seat| %>
+      <span class="booked-seat"><%= "Seat #{seat.number}"%></span>
+    <% end %> 
+  </div>
+  <br>
 
   <div>
-    <% if current_user.role == 'admin' || current_user.role == 'super_user' %>
-      <%= link_to "Edit this movie ticket", edit_movie_ticket_path(@movie_ticket), class: "btn btn-dark" %> |
-      <%= link_to "Back to movie tickets", movie_tickets_path, class: "btn btn-dark" %> <br></br>
-      <%= button_to "Destroy this movie ticket", @movie_ticket, method: :delete, class: "btn btn-dark" %>
-    <%else%>
+    <% if current_user || user_signed_in? %>
       <%= link_to "Back to movie tickets", movie_tickets_path, class: "btn btn-dark" %> |
-      <%= link_to "Select Theatre", theatres_path, class: "btn btn-dark"%>
+      <%= link_to "Details", movie_ticket_detail_path(@movie_ticket),method: :get,class: "btn btn-dark"%> 
+    <% elsif current_admin %>
+       <%= link_to "Edit this movie_ticket", edit_movie_ticket_path(@movie_ticket), class: "btn btn-dark" %> <br> <br/>
+       <%= link_to "Back to movie_tickets", movie_tickets_path, class: "btn btn-dark" %> <br> <br/>
+       <%= button_to "Destroy this ticket", @movie_ticket, method: :delete, class: "btn btn-dark" %>
+    <% else %>
+      <%= link_to "Checkout", new_user_registration_path,class: "btn btn-dark"%>
     <% end %>
   </div>
-</div>
+
+  

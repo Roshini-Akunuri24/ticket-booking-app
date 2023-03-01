@@ -2,7 +2,7 @@
   <%= form_with(model: theatre) do |form| %>
     <% if theatre.errors.any? %>
       <div style="color: red">
-        <h2><%= pluralize(theatre.errors.count, "error") %> prohibited this theatre from being saved:</h2>
+        <h3><%= pluralize(theatre.errors.count, "error") %> :</h3>
 
         <ul>
           <% theatre.errors.each do |error| %>
@@ -11,13 +11,19 @@
         </ul>
       </div>
     <% end %>
-    <div class="field">
-      <%= form.label :name, style: "display: block" %>
-      <%= form.text_field :name %>
-    </div>
+    <div class = "row py-5">
+      <div class = "col-lg-4 mx-auto">
+        <div class="field">
+          <%= form.label :name, style: "display: block" %>
+          <%= form.text_field :name, class: "form-control py-2" %>
+        </div>
 
-    <div class="actions">
-      <%= form.submit %>
+        <br>
+
+        <div class="actions">
+          <%= form.submit "Submit", class: "btn btn-dark" %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

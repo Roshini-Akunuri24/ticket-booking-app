@@ -4,7 +4,7 @@
     <div class="dropdown">
       <%= form_with url: movie_tickets_path, method: :get do |form| %>
         <%= form.select :location, options_for_select(Location.all.map{|loc| [loc.name, loc.id]}.insert(0,"Hyderabad")) %>
-        <%= form.submit%>
+        <%= form.submit "check", class: "btn btn-dark"%>
       <% end %>
     </div>
     <ul class="nav navbar-nav ms-auto">
@@ -20,15 +20,27 @@
   </nav>
 </div>
 
-<div class="text-center">
-  <% @theatres.each do |theatre|%>
-    <div class="theatre"> <br>
-      <%= render theatre %>
-      <%= link_to "show", theatre%> 
-    </div>
-  <% end %>
-</div>
-
-<% if current_user.role == 'admin' || current_user.role == 'super_user' %>
-    <%= link_to "Add theatre", new_theatre_path %> 
+<h1>Theatres</h1>
+  <table class="table"> 
+    <thead>
+      <tr>
+        <th>Name</th> 
+        <th> Actions </th>
+      </tr>
+    </thead>
+    <tbody> 
+    <% @theatres.each do |theatre|%>
+        <tr>
+          <td><%= theatre.name %></td>
+          <td style="display:flex; flex-direction:row;">
+            <%= link_to "Show", theatre, class: "btn btn-success" %>
+            <%= link_to "Edit", theatre, class: "btn btn-primary" %>
+            <%= button_to "Destroy", @theatre, method: :delete, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% if current_admin.role == 'admin' || current_admin.role == 'super_user' %>
+  <%= link_to "Add theatre", new_theatre_path, class: "btn btn-dark" %> 
 <% end %>

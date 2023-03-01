@@ -32,6 +32,7 @@ class ShowsController < ApplicationController
     
       # PATCH/PUT /movie_tickets/1 or /movie_tickets/1.json
       def update
+        @show = Show.find(params[:id])
         respond_to do |format|
           if @show.update(show_params)
             format.html { redirect_to movie_ticket_url(@movie_ticket), notice: "show was successfully updated." }
@@ -45,6 +46,7 @@ class ShowsController < ApplicationController
     
       # DELETE /movie_tickets/1 or /movie_tickets/1.json
       def destroy
+        @show = Show.find(params[:id])
         @show.destroy
     
         respond_to do |format|

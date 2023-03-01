@@ -19,14 +19,27 @@
     </ul>                    
   </nav>
 </div>
-<div class = "text-center">
-  <% @locations.each do |location|%>
-      <div class="location">
-        <%= render location %>
-        | <%= link_to "Show", location%> | 
-      </div>
-  <%end%>
-  <% if current_user.role == 'admin' || current_user.role == 'super_user' %>
-      <%= link_to "Add location", new_location_path %> 
-  <% end %>
-<div>
+<h2 >Admin Users</h2>
+  <table class="table"> 
+    <thead>
+      <tr>
+        <th>Name</th> 
+        <th>Options</th> 
+      </tr>
+    </thead>
+    <tbody> 
+    <% @locations.each do |location|%>
+        <tr>
+          <td><%= location.name %></td>
+          <td style="display:flex; flex-direction:row;">
+            <%= link_to "Show", location, class: "btn btn-success" %>
+            <%= link_to "Edit", location, class: "btn btn-primary" %>
+            <%= button_to "Destroy", @location, method: :delete, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% if current_admin.role == 'admin' || current_admin.role == 'super_user' %>
+  <%= link_to "Add location", new_location_path, class: "btn btn-dark" %> 
+<% end %>

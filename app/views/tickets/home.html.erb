@@ -3,40 +3,71 @@
     <h1 style="color:white"> <%= image_tag "ticket_logo.jpg", width:90%> BookMyTicket </h2>
 		<div class="nav">
       <ul>
-        <% if current_user%>
-          <%if current_user.role=="admin"%>
-            <%=link_to "User View", movie_tickets_path, class:"btn btn-danger"%>
-            <%=link_to "Add Movies", new_movie_ticket_path, class:"btn btn-danger"%>
-            <%=link_to "Shows", shows_path, class:"btn btn-danger"%>  
-            <%= link_to "Theatres", theatres_path, class: "btn btn-danger" %>
-            <%= link_to "Locations", locations_path, class: "btn btn-danger" %>  
+        <% if  current_user%>
+          <%if current_user%>
+            <div class = "user-page">
+              <%=link_to "Explore Movies", movie_tickets_path, class:"btn btn-danger"%>
+            </div>
           <%end%>
-
-          <%if current_user.role=="super_user"%>
-            <%=link_to "All Movies", movie_tickets_path, class:"btn btn-danger"%>
-            <%=link_to "Add admin users", admin_users_path, class:"btn btn-danger"%>
-          <%end%>
-
-          <%if current_user.role=="user"%>
-            <%=link_to "Explore Movies", movie_tickets_path, class:"btn btn-danger"%>
+          <div class="row">
+            <% @movie_tickets.each do |movie_ticket|%>
+              <div class="col-md-4">
+                <div class="movie_ticket-box">
+                  <%= render movie_ticket %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% elsif current_admin%>
+          <%if current_admin.role == "admin" %>
+            <div class = "admin-page">
+              <div class = "row">
+                <%=link_to "Website View", movie_tickets_path, class:"btn btn-dark"%> <br></br>
+                <%=link_to "Add Movies", new_movie_ticket_path, class:"btn btn-dark"%><br></br>
+                <%=link_to "Shows", shows_path, class:"btn btn-dark"%>  <br></br>
+                <%= link_to "Theatres", theatres_path, class: "btn btn-dark" %><br></br>
+                <%= link_to "Locations", locations_path, class: "btn btn-dark" %> <br></br> 
+                <%= button_to "LOGOUT",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%>  <br> <br/> 
+              </div>
+            </div>
+          <% end %>
+          <%if current_admin.role=="super_user"%>
+            <div class = "admin-page">
+              <div class = "row">
+                <%=link_to "Website View", movie_tickets_path, class:"btn btn-dark"%> <br></br>
+                <%=link_to "Add Movies", new_movie_ticket_path, class:"btn btn-dark"%><br></br>
+                <%=link_to "Shows", shows_path, class:"btn btn-dark"%>  <br></br>
+                <%= link_to "Theatres", theatres_path, class: "btn btn-dark" %><br></br>
+                <%= link_to "Locations", locations_path, class: "btn btn-dark" %> <br></br> 
+                <%= link_to "Add movie ticket", new_movie_ticket_path, class: "btn btn-dark" %>  <br> <br/>
+                <%=link_to "Add admin users", admin_users_path, class:"btn btn-dark"%>
+                <%= button_to "LOGOUT",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%> <br> <br/> 
+              </div>
+            </div>
           <%end%>
         <%else%>
-            <li class="active"><a href="#"> <%=link_to "Sign In", new_user_session_path%></a></li>
-            <li class="active"><a href="#"><%=link_to "Sign Up", new_user_registration_path%></a></li>      
-        <%end%>      
-      </ul>
-    </div>
+        <div class= "main-page" style = "margin-left:900px;">
+          <li class="active"><a href="#"> <%=link_to "Sign In", new_user_session_path%></a></li>
+          <li class="active"><a href="#"><%=link_to "Sign Up", new_user_registration_path%></a></li> 
+          <li class="active"><a href="#"><%=link_to " ADMIN", new_admin_session_path%></a></li> 
+        </div>  
+          <div class = "home-page">
+            <div class="row">
+              <% @movie_tickets.each do |movie_ticket|%>
+                <div class="col-md-3" onclick="show(this)">
+                  <div class="movie_ticket-box">
+                    <%= render movie_ticket %>
+                    <%= link_to "", movie_ticket%> 
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <%end%>    
+      </ul> 
+    </div> 
   </div>
 </header>
+<%= javascript_include_tag "show" %>
 
 
-  <div class="row">
-    <% @movie_tickets.each do |movie_ticket|%>
-      <div class="col-md-4">
-        <div class="movie_ticket-box">
-          <%= render movie_ticket %>
-          <%= link_to "Show", new_user_session_path %>
-        </div>
-      </div>
-    <%end%>
-  </div>

@@ -1,0 +1,13 @@
+<div class = "text-center">    
+  <h1>Editing movie ticket</h1>
+
+  <%= render "form", m: @movie_ticket %>
+  
+
+  <br>
+
+  <div>
+    <%= link_to "Show this movie ticket", @movie_ticket %> |
+    <%= link_to "Back to movie tickets", movie_tickets_path %>
+  </div>
+</div>

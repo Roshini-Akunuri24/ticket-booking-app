@@ -20,7 +20,6 @@ class LocationsController < ApplicationController
       # POST /movie_tickets or /movie_tickets.json
       def create
         @location = Location.new(location_params)
-        # @movie_ticket.user_id = current_user.id
         respond_to do |format|
           if @location.save
             format.html { redirect_to location_url(@location), notice: "location was successfully created." }
@@ -34,6 +33,7 @@ class LocationsController < ApplicationController
     
       # PATCH/PUT /movie_tickets/1 or /movie_tickets/1.json
       def update
+        @location = Location.find(params[:id])
         respond_to do |format|
           if @location.update(location_params)
             format.html { redirect_to location_url(@location), notice: "location was successfully updated." }
@@ -47,10 +47,11 @@ class LocationsController < ApplicationController
     
       # DELETE /movie_tickets/1 or /movie_tickets/1.json
       def destroy
+        @location = Location.find(params[:id])
         @location.destroy
     
         respond_to do |format|
-          format.html { redirect_to location_url, notice: "location was successfully destroyed." }
+          format.html { redirect_to locations_url, notice: "location was successfully destroyed." }
           format.json { head :no_content }
         end
       end

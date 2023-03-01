@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
+  
   resources :admin_users
   resources :super_users
-  # resources :movie_tickets
+  resources :movie_tickets
   resources :theatres
   resources :locations
   resources :shows
 
-  scope "admin_user" do
-    devise_for :users 
-  end 
-
+    devise_for :users, path: 'users'
+    devise_for :admins,path: 'admins'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -19,18 +18,21 @@ Rails.application.routes.draw do
   # root "films#open"
   # post 'search', to: 'search#show'
 
-  scope "admin_user" do
-    resources :movie_tickets
-  end 
+  get '/movie_tickets/:movie_ticket_id/details', to: 'movie_tickets#detail', as: 'movie_ticket_detail'
 
-  # namespace :admin_user do
+  # scope :user do
   #   resources :movie_tickets 
   # end
 
-  # resources :users do
-  #   resources :movie_tickets do
-  # end
+  resources :movie_tickets do
+    resources :seats 
+    # resources :seats, only: [:update, :create]
+  end
 
+  # namespace :admins do
+  #   resources :movie_tickets 
+  # end
+  
   get "locations/ticket", to: "locations#login"
 
   get "films/open", to: "films#open"

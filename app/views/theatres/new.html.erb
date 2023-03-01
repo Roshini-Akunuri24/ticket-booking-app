@@ -19,7 +19,7 @@
     </ul>                    
   </nav>
 </div>
-<div class = "txt-center">
+<div class = "text-center">
   <h1>New theatre</h1>
 
   <%= render "form", theatre: @theatre %>
@@ -27,6 +27,6 @@
   <br>
 
   <div>
-    <%= link_to "Back to theatre", theatres_path %>
+    <%= link_to "Back to theatre", theatres_path, class: "btn btn-dark" %>
   </div>
 </div>

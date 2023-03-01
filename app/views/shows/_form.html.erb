@@ -2,7 +2,7 @@
   <%= form_with(model: show) do |form| %>
     <% if show.errors.any? %>
       <div style="color: red">
-        <h2><%= pluralize(show.errors.count, "error") %> prohibited this show from being saved:</h2>
+        <h3><%= pluralize(show.errors.count, "error") %> : </h3>
   
         <ul>
           <% show.errors.each do |error| %>
@@ -11,16 +11,17 @@
         </ul>
       </div>
     <% end %>
-  
-    <div>
-      <%= form.label :TimeSlot, style: "display: block" %>
-      <%= form.time_field :time %>
-    </div>
-
-    <br>
-    
-    <div>
-      <%= form.submit %>
+    <div class = "row py-5">
+      <div class = "col-lg-4 mx-auto">
+        <div>
+          <%= form.label :TimeSlot, style: "display: block" %>
+          <%= form.text_field :time, class: "form-control py-2" %>
+        </div>
+        <br>
+        <div>
+          <%= form.submit "Submit", class: "btn btn-dark" %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

@@ -19,15 +19,31 @@
     </ul>                    
   </nav>
 </div>
-<div class = "text-center">
+
+
+<h2 class="text-center">Admin Users</h2>
+<table class="table"> 
+  <thead>
+    <tr>
+      <th>Name</th> 
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody> 
   <% @admin_users.each do |admin_user| %>
-    <%= render admin_user %>
-    <p>
-      <%= link_to "Show this admin user", admin_user %>
-    </p>
-  <% end %>
-  <%= link_to "New admin user", new_admin_user_path %>
-</div>  
-
-
-
+      <tr>
+        <td><%= admin_user.name %></td>
+        <td><%= admin_user.email %></td>
+        <td><%= admin_user.password %></td>
+        <td style="display:flex; flex-direction:row;">
+          <%= link_to "Show", admin_user, class: "btn btn-success" %>
+          <%= link_to "Edit", admin_user, class: "btn btn-primary" %>
+          <%= button_to "Destroy", @admin_user, method: :delete, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%=link_to "Create admin users", new_admin_user_path, class:"btn btn-dark"%>

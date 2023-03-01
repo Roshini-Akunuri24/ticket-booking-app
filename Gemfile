@@ -87,3 +87,5 @@ gem 'searchkick', '~> 5.1'
 
 gem 'pry'
 
+gem 'rails-controller-testing'
+

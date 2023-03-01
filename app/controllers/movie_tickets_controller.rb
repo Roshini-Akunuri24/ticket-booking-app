@@ -3,24 +3,29 @@ class MovieTicketsController < ApplicationController
 
   # GET /movie_tickets or /movie_tickets.json
   def index
-    @movie_tickets = MovieTicket.all.paginate(page: params[:page], per_page: 6)
+    @movie_tickets = MovieTicket.order(date: :asc).paginate(page: params[:page], per_page: 8)
     @location = Location.find(params[:location]).name if params[:location]
     if @location == "Hyderabad"
-      @movie_tickets = MovieTicket.where(location: params[:location]).paginate(page: params[:page], per_page: 2)
+      @movie_tickets = MovieTicket.where(location: params[:location]).paginate(page: params[:page], per_page: 8)
     elsif @location == "Warangal"
-      @movie_tickets = MovieTicket.where(location: params[:location]).paginate(page: params[:page], per_page: 2)
+      @movie_tickets = MovieTicket.where(location: params[:location]).paginate(page: params[:page], per_page: 8)
     elsif @location == "Vijayawada"
-      @movie_tickets = MovieTicket.where(location: params[:location]).paginate(page: params[:page], per_page: 2)
+      @movie_tickets = MovieTicket.where(location: params[:location]).paginate(page: params[:page], per_page: 8)
     end
   end
 
   # GET /movie_tickets/1 or /movie_tickets/1.json
   def show 
-    @theatre=Theatre.find(params[:theatre_id]) if params[:theatre_id]
-    @movie_ticket=MovieTicket.find(params[:id])
+    @movie_ticket = MovieTicket.find(params[:id])
+    @theatres = Theatre.joins(:movie_tickets).where(movie_tickets: { movie_name: @movie_ticket.movie_name }).distinct
+    @shows = Show.joins(:movie_tickets).where(movie_tickets: { movie_name: @movie_ticket.movie_name }).distinct
+# for seats
+    @available_seats = @movie_ticket.seats.where(booked: false)
+    @unavailable_seats = @movie_ticket.seats.where(booked: true)
   end
-  
-
+   
+  def detail
+  end
 
 
   # GET /movie_tickets/new
@@ -46,6 +51,7 @@ class MovieTicketsController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /movie_tickets/1 or /movie_tickets/1.json
   def update
@@ -78,6 +84,6 @@ class MovieTicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_ticket_params
-      params.require(:movie_ticket).permit(:movie_name, :date, :image, :location_id, :show_id, :theatre_id)
+      params.require(:movie_ticket).permit(:movie_name, :date, :image, :location_id, :show_id, :theatre_id, :user_id)
     end
 end

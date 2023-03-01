@@ -4,6 +4,7 @@ class TheatresController < ApplicationController
     @theatres = Theatre.all
     
   end
+  
 
   # GET /theatres/1 or /theatres/1.json
   def show
@@ -36,6 +37,7 @@ class TheatresController < ApplicationController
 
   # PATCH/PUT /theatres/1 or /theatres/1.json
   def update
+    @theatre = Theatre.find(params[:id])
     respond_to do |format|
       if @theatre.update(theatre_params)
         format.html { redirect_to theatre_url(@theatre), notice: "theatre was successfully updated." }
@@ -49,6 +51,7 @@ class TheatresController < ApplicationController
 
   # DELETE /theatres/1 or /theatres/1.json
   def destroy
+    @theatre = Theatre.find(params[:id])
     @theatre.destroy
 
     respond_to do |format|

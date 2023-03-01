@@ -20,11 +20,13 @@
   </nav>
 </div>
 <div class="text-center">
-  <p style="color: green"><%= notice %></p>
 
   <%= render @location %>
-
-  <%= link_to "Edit this location", edit_location_path(@location), class: "btn btn-dark" %> <br> <br/>
-  <%= link_to "Back to location", locations_path, class: "btn btn-dark" %> <br> <br/>
-  <%= button_to "Destroy this location", @location, method: :delete, class: "btn btn-dark" %>
+  <% if current_user %>
+    <%= link_to "Back to location", locations_path, class: "btn btn-dark" %> <br> <br/>
+  <% else %>
+    <%= link_to "Edit this location", edit_location_path(@location), class: "btn btn-dark" %> <br> <br/>
+    <%= link_to "Back to location", locations_path, class: "btn btn-dark" %> <br> <br/>
+    <%= button_to "Destroy this location", @location, method: :delete, class: "btn btn-dark" %>
+  <% end %>
 </div>
