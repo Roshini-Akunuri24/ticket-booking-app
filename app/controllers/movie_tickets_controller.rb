@@ -20,8 +20,8 @@ class MovieTicketsController < ApplicationController
     @theatres = Theatre.joins(:movie_tickets).where(movie_tickets: { movie_name: @movie_ticket.movie_name }).distinct
     @shows = Show.joins(:movie_tickets).where(movie_tickets: { movie_name: @movie_ticket.movie_name }).distinct
 # for seats
-    @available_seats = @movie_ticket.seats.where(booked: false)
-    @unavailable_seats = @movie_ticket.seats.where(booked: true)
+    # @available_seats = @movie_ticket.seats.where(booked: false)
+    # @unavailable_seats = @movie_ticket.seats.where(booked: true)
   end
    
   def detail
@@ -84,6 +84,6 @@ class MovieTicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_ticket_params
-      params.require(:movie_ticket).permit(:movie_name, :date, :image, :location_id, :show_id, :theatre_id, :user_id)
+      params.require(:movie_ticket).permit(:movie_name, :date, :image, :location_id, :show_id, :theatre_id)
     end
 end

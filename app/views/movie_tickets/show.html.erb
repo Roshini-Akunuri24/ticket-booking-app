@@ -44,7 +44,7 @@
 </div>
 
   <div class = "seats-avail">
-    <% @available_seats.each do |seat| %>
+    <% @movie_ticket.available_seats.each do |seat| %>
         <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "available-seat", class: "btn btn-danger" %>
     <% end %>
   </div>  
@@ -52,8 +52,8 @@
   
   <div class = "seats-booked">
     <h6> Seats Booked </h6>
-    <% @unavailable_seats.each do |seat| %>
-      <span class="booked-seat"><%= "Seat #{seat.number}"%></span>
+    <% @movie_ticket.unavailable_seats.each do |seat| %>
+      <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "unavailable-seat", class: "btn btn-success"%>
     <% end %> 
   </div>
   <br>

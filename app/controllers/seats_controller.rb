@@ -14,7 +14,11 @@ class SeatsController < ApplicationController
     def show
       @movie_ticket = MovieTicket.find(params[:movie_ticket_id])
       @seat = @movie_ticket.seats.find(params[:id])
-      @seat.update(booked: true)
+       if @seat.booked == true
+      @seat.update(booked: false)
+       else
+        @seat.update(booked: true)
+       end 
       redirect_to @movie_ticket
     end
     

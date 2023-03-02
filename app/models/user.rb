@@ -8,6 +8,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable  
 
-  has_many :movie_tickets
   has_many :booked_tickets
 end
