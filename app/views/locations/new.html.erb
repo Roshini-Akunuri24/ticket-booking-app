@@ -3,7 +3,7 @@
     <a class="navbar-brand" style= "margin-inline-start: 10px;" href="http://localhost:3000/" > <%= image_tag "ticket_logo.jpg", width:60%></a>
     <div class="dropdown">
       <%= form_with url: movie_tickets_path, method: :get do |form| %>
-        <%= form.select :location, options_for_select(Location.all.map{|loc| [loc.name, loc.id]}.insert(0,"Hyderabad")) %>
+        <%= form.select :location, options_from_collection_for_select(Location.all, "id", "name") %>
         <%= form.submit%>
       <% end %>
     </div>

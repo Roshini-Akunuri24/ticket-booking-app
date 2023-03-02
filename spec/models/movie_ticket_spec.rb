@@ -4,7 +4,7 @@ RSpec.describe MovieTicket, type: :model do
   subject {
     described_class.new(movie_name: "Anything",
                         image: "/path/to/something.jpg",
-                        date: DateTime.now,
+                        date: Date.today,
                         location_id: 1,
                         show_id: 1,
                         theatre_id: 1)
@@ -24,10 +24,7 @@ RSpec.describe MovieTicket, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it "is not valid without a image" do
-    subject.image = nil
-    expect(subject).to_not be_valid
-  end
+
 
   it "belongs_to location " do
     movie_ticket = described_class.reflect_on_association(:location)

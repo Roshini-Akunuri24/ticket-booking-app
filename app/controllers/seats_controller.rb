@@ -15,7 +15,7 @@ class SeatsController < ApplicationController
       @movie_ticket = MovieTicket.find(params[:movie_ticket_id])
       @seat = @movie_ticket.seats.find(params[:id])
        if @seat.booked == true
-      @seat.update(booked: false)
+         @seat.update(booked: false)
        else
         @seat.update(booked: true)
        end 

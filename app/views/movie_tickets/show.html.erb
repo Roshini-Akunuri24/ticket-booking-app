@@ -4,7 +4,7 @@
     <% if user_signed_in? %>
       <div class="dropdown">
         <%= form_with url: movie_tickets_path, method: :get do |form| %>
-          <%= form.select :location, options_for_select(Location.all.map{|loc| [loc.name, loc.id]}.insert(0,"Hyderabad")) %>
+          <%= form.select :location, options_from_collection_for_select(Location.all, "id", "name") %>
           <%= form.submit "check", class: "btn btn-dark"%>
         <% end %>
       </div>
@@ -14,11 +14,11 @@
         <a class="nav-link dropdown-toggle btn btn-light" data-bs-toggle = "dropdown" style= "margin-inline-end: 20px;">Profile</a>
         <div class="dropdown-menu dropdown-menu-end">
           <% if user_signed_in? %>
-            <a href="http://localhost:3000/admin_user/users/edit" class="dropdown-item">edit</a>
+            <a href="http://localhost:3000/users/edit" class="dropdown-item">edit</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
           <% else %>
-            <a class="dropdown-item"><%=button_to "login",user_session_path, class:"btn bg-transparent"%></a>
+            <a class="dropdown-item"><%=link_to "login",new_user_session_path, class:"btn bg-transparent"%></a>
           <% end %>
         </div>
       </li>

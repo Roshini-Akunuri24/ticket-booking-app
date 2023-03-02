@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :seat do
-    number { 1 }
-    show_id { 1 }
+    number { 10 }
     booked { false }
-    price {99.9}
+    price {150.0}
+    movie_ticket_id { 9 }
   end
 end

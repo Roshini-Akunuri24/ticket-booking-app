@@ -1,6 +1,6 @@
 class Admin < ApplicationRecord
   validates :name, :email, :role, presence: true
-  validates :phone_number, presence: true ,numericality: { less_than_or_equal_to: 10,  only_integer: true }
+  validates :phone_number, presence: true ,numericality: {  only_integer: true }
   validates :email, uniqueness: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

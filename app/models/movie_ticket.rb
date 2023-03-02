@@ -1,5 +1,6 @@
 class MovieTicket < ApplicationRecord
-    validates :movie_name, presence: true 
+    validates :movie_name, :date, presence: true
+
     # has_many :tickets
     mount_uploader :image, ImageUploader
     # belongs_to :user
