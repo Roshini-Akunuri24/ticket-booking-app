@@ -32,16 +32,16 @@
   <%= render @movie_ticket %>
 </div>
 <div class = "text-center">
-  <h6> <%= @movie_ticket.movie_name %></h6>
-
-  <% @theatres.each do |theatre| %>
+  <h3> Movie: <%= @movie_ticket.movie_name %></h3>
+  
+ <h5> Theatre: <% @theatres.each do |theatre| %>
     <%= theatre.name %>
-  <% end %>
+  <% end %></h5>
 
-    <% @shows.each do |show| %>
+   <h5> Time: <% @shows.each do |show| %>
       <%= show.time %>
     <% end %>  
-</div>
+</div> </h5>
 
   <div class = "seats-avail">
     <% @movie_ticket.available_seats.each do |seat| %>
