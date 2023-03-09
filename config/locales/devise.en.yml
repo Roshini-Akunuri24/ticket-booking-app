@@ -67,3 +67,5 @@ en:
       signed_in: 'Signed in successfully.'
       signed_in_first_time: "MY CUSTOM WELCOME GREETING."
       signed_out: 'Signed out successfully.'
+      not_found: "Couldn't find a user with that email address."
+      invalid: "Invalid email or password."

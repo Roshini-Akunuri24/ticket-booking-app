@@ -1,0 +1,52 @@
+<div class = "text-center">
+  <%= form_with(model: booked_ticket) do |form| %>
+    <% if booked_ticket.errors.any? %>
+      <div style="color: red">
+        <h3><%= pluralize(booked_ticket.errors.count, "error") %> :</h3>
+
+        <ul>
+          <% booked_ticket.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class = "row py-5">
+      <div class = "col-lg-4 mx-auto">
+
+        <div>
+          <%= form.label :Movie %>
+          <%= form.select :movie_id, options_for_select(MovieTicket.all.map { |movie| [movie.movie_name, movie.id] }) %>
+        </div>
+<br>
+        <div>
+          <%= form.label :Show %>
+          <%= form.select :show_id, options_for_select(Show.all.map { |sho| [sho.time, sho.id] }) %>
+        </div>
+<br>
+
+        <div>
+          <%= form.label :user_id %>
+          <%= form.number_field :user_id, class: "form-control py-2" %>
+        </div>
+<br>
+      <div>
+        <%= form.label :price %>
+        <%= form.number_field :price_per_ticket, class: "form-control py-2" %>
+      </div>
+<br>
+
+    <div>
+        <%= form.label :total_seats_selected %>
+        <%= form.number_field :seat_id, class: "form-control py-2" %>
+    </div>
+
+<br>
+        
+        <div>
+          <%= form.submit "Submit", class: "btn btn-dark"%>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

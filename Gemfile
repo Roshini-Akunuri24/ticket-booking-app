@@ -89,3 +89,9 @@ gem 'pry'
 
 gem 'rails-controller-testing'
 
+gem 'stripe'
+
+gem 'securerandom'
+
+gem 'monetize'
+

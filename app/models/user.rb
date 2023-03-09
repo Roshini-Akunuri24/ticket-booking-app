@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :name, :email, :phone_number, presence: true
+  validates :name, :email, presence: true
   validates :phone_number, presence: true ,numericality: { only_integer: true }
   validates :email, uniqueness: true
   # has_many :movie_tickets

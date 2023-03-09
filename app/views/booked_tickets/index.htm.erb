@@ -1,0 +1,9 @@
+<% @booked_ticket.each do |booked_ticket| %>
+  <div>
+    <h2><%= booked_ticket.movie_ticket.movie_name %></h2>
+    <p>Theater: <%= booked_ticket.movie_ticket.theater.name %></p>
+    <p>Date <%= booked_ticket.movie_ticket.date.strftime('%B %d, %Y at %I:%M %p') %></p>
+    <p>Quantity: <%= booked_ticket.quantity %></p>
+    <p>Total Price: <%= booked_ticket.total_price %></p>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark" style= "margin-inline-end: -15px;">
+    <a class="navbar-brand" style= "margin-inline-start: 10px;" href="http://localhost:3000/" > <%= image_tag "ticket_logo.jpg", width:60%></a>
+    <ul class="nav navbar-nav ms-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle btn btn-light" data-bs-toggle = "dropdown" style= "margin-inline-end: 20px;">Profile</a>
+        <div class="dropdown-menu dropdown-menu-end">
+        <a class="dropdown-item"><%= link_to "history", payments_path, class:"btn bg-transparent" %></a>
+          <a href="http://localhost:3000/users/edit" class="dropdown-item">edit</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
+        </div>
+      </li>
+    </ul>                    
+  </nav>
+</div>
+<div class = "history">
+  <% @payments.each do |payment|%>
+    <h3> Code : <%= payment.code %> </h3>
+    <h5> User Name : <%= payment.user.name %> </h5>
+    <h5> Movie_name : <%= payment.movie_ticket.movie_name %> </h5>
+    <h5> Price : <%= payment.total_amount %> </h5>
+    <h5> Seat_Number : <%= payment.seat.number %> </h5> <br>
+    <%= link_to 'Show', payment %><br> </br>
+  <% end %>
+</div>
+
+

@@ -46,3 +46,4 @@ en:
         signed_in: 'Welcome user, you are signed in.'
       admin:
         signed_in: 'Hello admin!'
+      

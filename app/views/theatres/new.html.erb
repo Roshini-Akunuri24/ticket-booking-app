@@ -11,7 +11,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle btn btn-light" data-bs-toggle = "dropdown" style= "margin-inline-end: 20px;">Profile</a>
         <div class="dropdown-menu dropdown-menu-end">
-          <a href="http://localhost:3000/admin_user/users/edit" class="dropdown-item">edit</a>
+        <a class="dropdown-item"><%= link_to "history", payments_path, class:"btn bg-transparent" %></a>
+          <a href="http://localhost:3000/users/edit" class="dropdown-item">edit</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
         </div>
@@ -27,6 +28,6 @@
   <br>
 
   <div>
-    <%= link_to "Back to theatre", theatres_path, class: "btn btn-dark" %>
+    <%= link_to "Back to theatre", admins_theatres_path, class: "btn btn-dark" %>
   </div>
 </div>

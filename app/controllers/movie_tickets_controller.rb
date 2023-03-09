@@ -1,6 +1,5 @@
 class MovieTicketsController < ApplicationController
   before_action :set_movie_ticket, only: %i[ show edit update destroy ]
-
   # GET /movie_tickets or /movie_tickets.json
   def index
     @movie_tickets = MovieTicket.order(date: :asc).paginate(page: params[:page], per_page: 8)
@@ -25,6 +24,7 @@ class MovieTicketsController < ApplicationController
   end
    
   def detail
+    @movie_ticket = MovieTicket.find(params[:id])
   end
 
 
@@ -84,6 +84,6 @@ class MovieTicketsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_ticket_params
-      params.require(:movie_ticket).permit(:movie_name, :date, :image, :location_id, :show_id, :theatre_id)
+      params.require(:movie_ticket).permit(:movie_name, :date, :image, :location_id, :show_id, :theatre_id, :price)
     end
 end

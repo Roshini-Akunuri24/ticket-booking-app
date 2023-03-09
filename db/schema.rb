@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_01_101711) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_08_054406) do
   create_table "admin_users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -37,12 +37,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_101711) do
   create_table "booked_tickets", force: :cascade do |t|
     t.integer "movie_ticket_id"
     t.integer "show_id"
-    t.decimal "price_per_ticket"
-    t.integer "number_of_tickets"
     t.integer "user_id"
     t.integer "seat_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "booked_ticket_key"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -71,6 +70,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_101711) do
     t.index ["location_id"], name: "index_movie_tickets_on_location_id"
     t.index ["show_id"], name: "index_movie_tickets_on_show_id"
     t.index ["theatre_id"], name: "index_movie_tickets_on_theatre_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_ticket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "total_amount"
+    t.integer "seat_id"
+    t.string "code"
   end
 
   create_table "seats", force: :cascade do |t|

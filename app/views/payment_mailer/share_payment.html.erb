@@ -1,0 +1,9 @@
+<h1> Details</h1>
+<p><strong>Booking ID:</strong> <%= @payment.id %></p>
+<p>Date: <%= @payment.created_at.strftime("%B %d, %Y") %></p>
+<p>Code: <%= @payment.code %><p>
+<p><strong>Customer Name:</strong>  <%= @payment.user.name %></p>
+<p><strong>Customer Email:</strong>   <%= @payment.user.email %></p>
+<p><strong>Customer Phone:</strong>   <%= @payment.user.phone_number %></p>
+<p><strong> Price:</strong><%= @payment.total_amount %><p>
+<p>Thanks!</p>

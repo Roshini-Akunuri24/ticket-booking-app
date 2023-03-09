@@ -10,16 +10,17 @@ class MovieTicket < ApplicationRecord
     has_many :seats
     has_many :booked_tickets
 
+
     def unavailable_seats
         seats.where(booked: true)
-      end
+    end
 
       def available_seats
         seats.where(booked: false)
       end
 
-    # def total_price
-    #     unavailable_seats.where(user_id: user.id).sum(:price)
-    # end
+    def total_price
+        unavailable_seats.sum(:price)
+    end
     
 end

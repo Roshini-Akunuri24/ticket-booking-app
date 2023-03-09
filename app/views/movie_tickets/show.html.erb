@@ -14,6 +14,7 @@
         <a class="nav-link dropdown-toggle btn btn-light" data-bs-toggle = "dropdown" style= "margin-inline-end: 20px;">Profile</a>
         <div class="dropdown-menu dropdown-menu-end">
           <% if user_signed_in? %>
+            <a class="dropdown-item"><%= link_to "history", payments_path, class:"btn bg-transparent" %></a>
             <a href="http://localhost:3000/users/edit" class="dropdown-item">edit</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
@@ -26,49 +27,84 @@
   </nav>
 </div>
 
-<p style="color: black"><%= notice %></p>
+<% if current_user %>
 
-<div class = "movie-show">
-  <%= render @movie_ticket %>
-</div>
-<div class = "text-center">
-  <h3> Movie: <%= @movie_ticket.movie_name %></h3>
-  
- <h5> Theatre: <% @theatres.each do |theatre| %>
-    <%= theatre.name %>
-  <% end %></h5>
-
-   <h5> Time: <% @shows.each do |show| %>
-      <%= show.time %>
-    <% end %>  
-</div> </h5>
-
-  <div class = "seats-avail">
-    <% @movie_ticket.available_seats.each do |seat| %>
-        <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "available-seat", class: "btn btn-danger" %>
-    <% end %>
-  </div>  
-   <br>
-  
-  <div class = "seats-booked">
-    <h6> Seats Booked </h6>
-    <% @movie_ticket.unavailable_seats.each do |seat| %>
-      <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "unavailable-seat", class: "btn btn-success"%>
-    <% end %> 
+  <p style="color: black"><%= notice %></p>
+  <div class = "movie-show">
+    <%= render @movie_ticket %>
   </div>
-  <br>
+  <div class = "text-center">
+    <h3> Movie: <%= @movie_ticket.movie_name %></h3>
+    
+    <h5> Theatre: <% @theatres.each do |theatre| %>
+      <%= theatre.name %>
+    <% end %></h5>
 
+      <h5> Time: <% @shows.each do |show| %>
+        <%= show.time %>
+      <% end %>   </h5>
+  </div>
+
+    <div class = "seats-avail">
+      <% @movie_ticket.available_seats.each do |seat| %>
+          <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "available-seat", class: "btn btn-danger" %>
+      <% end %>
+    </div>  
+    <br>
+    
+    <div class = "seats-booked">
+      <h6> Seats Booked </h6>
+      <% @movie_ticket.unavailable_seats.each do |seat| %>
+        <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "unavailable-seat", class: "btn btn-success"%>
+      <% end %> 
+    </div>
+  
+  <% end %>
+
+  <br>
   <div>
     <% if current_user || user_signed_in? %>
-      <%= link_to "Back to movie tickets", movie_tickets_path, class: "btn btn-dark" %> |
-      <%= link_to "Details", movie_ticket_detail_path(@movie_ticket),method: :get,class: "btn btn-dark"%> 
+      <%= link_to "Back to movie tickets", users_movie_tickets_path, class: "btn btn-dark" %> |
+      <%= link_to "Details", movie_ticket_detail_path(@movie_ticket),method: :get,class: "btn btn-dark"%>
+      
     <% elsif current_admin %>
-       <%= link_to "Edit this movie_ticket", edit_movie_ticket_path(@movie_ticket), class: "btn btn-dark" %> <br> <br/>
-       <%= link_to "Back to movie_tickets", movie_tickets_path, class: "btn btn-dark" %> <br> <br/>
-       <%= button_to "Destroy this ticket", @movie_ticket, method: :delete, class: "btn btn-dark" %>
+      <%= render @movie_ticket %>
+      <%= link_to "Edit this movie_ticket", edit_movie_ticket_path(@movie_ticket), class: "btn btn-dark" %> <br> <br/>
+      <%= link_to "Back to movie_tickets", admins_movie_tickets_path, class: "btn btn-dark" %> <br> <br/>
+      <%= button_to "Destroy this ticket", @movie_ticket, method: :delete, class: "btn btn-dark" %>
     <% else %>
+      <div class = "movie-show">
+        <%= render @movie_ticket %>
+      </div>
+      <div class = "text-center">
+        <h3> Movie: <%= @movie_ticket.movie_name %></h3>
+        <h5> Theatre: <% @theatres.each do |theatre| %>
+          <%= theatre.name %>
+        <% end %></h5>
+
+        <h5> Time: <% @shows.each do |show| %>
+            <%= show.time %>
+        <% end %>  </h5> 
+      </div>
+
+      <div class = "seats-avail">
+        <% @movie_ticket.available_seats.each do |seat| %>
+          <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "available-seat", class: "btn btn-danger" %>
+        <% end %>
+      </div>  
+      <br>
+    
+      <div class = "seats-booked">
+        <h6> Seats Booked </h6>
+        <% @movie_ticket.unavailable_seats.each do |seat| %>
+          <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "unavailable-seat", class: "btn btn-success"%>
+        <% end %> 
+      </div>
+      <p>Total Price: <%= number_to_currency(@movie_ticket.total_price) %></p>
+      <br>
       <%= link_to "Checkout", new_user_registration_path,class: "btn btn-dark"%>
     <% end %>
   </div>
+
 
   

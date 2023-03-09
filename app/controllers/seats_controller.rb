@@ -25,7 +25,7 @@ class SeatsController < ApplicationController
     private
 
     def seat_params
-      params.require(:seat).permit(:number, :movie_ticket_id, :booked, :price)
+      params.require(:seat).permit(:number, :movie_ticket_id, :booked)
     end
 end
   

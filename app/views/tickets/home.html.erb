@@ -6,7 +6,7 @@
         <% if  current_user%>
           <%if current_user%>
             <div class = "user-page">
-              <%=link_to "Explore Movies", movie_tickets_path, class:"btn btn-danger"%>
+              <%=link_to "Explore Movies", users_movie_tickets_path, class:"btn btn-danger"%>
             </div>
           <%end%>
           <div class="row">
@@ -20,29 +20,41 @@
           </div>
         <% elsif current_admin%>
           <%if current_admin.role == "admin" %>
-            <div class = "admin-page">
-              <div class = "row">
-                <%=link_to "Website View", movie_tickets_path, class:"btn btn-dark"%> <br></br>
-                <%=link_to "Add Movies", new_movie_ticket_path, class:"btn btn-dark"%><br></br>
-                <%=link_to "Shows", shows_path, class:"btn btn-dark"%>  <br></br>
-                <%= link_to "Theatres", theatres_path, class: "btn btn-dark" %><br></br>
-                <%= link_to "Locations", locations_path, class: "btn btn-dark" %> <br></br> 
-                <%= button_to "LOGOUT",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%>  <br> <br/> 
-              </div>
+            <div class="sidebar">
+                <i class="fa fa-fw fa-home" style = "color:white"></i><br>
+                <%=link_to "Movies", admins_movie_tickets_path, class:"btn btn-dark"%> <br></br>
+                <%=link_to "Add Movies", admins_new_movie_tickets_path, class:"btn btn-dark"%><br></br>
+                <%=link_to "Shows", admins_shows_path, class:"btn btn-dark"%>  <br></br>
+                <%= link_to "Theatres", admins_theatres_path, class: "btn btn-dark" %><br></br>
+                <%= link_to "Locations", admins_locations_path, class: "btn btn-dark" %> <br></br> 
+                <a><i class="fa fa-sign-out" style = "color:white"></i><br><%= button_to "LOGOUT",destroy_admin_session_path, method: :delete, class:"btn btn-dark"%> </a> <br> <br/> 
             </div>
+            <div class="main">
+              <h2>Welcome Admin</h2>
+              <p></p>
+              <p></p>
+              <p></p>
+            </div>
+          </div>
           <% end %>
           <%if current_admin.role=="super_user"%>
-            <div class = "admin-page">
-              <div class = "row">
-                <%=link_to "Website View", movie_tickets_path, class:"btn btn-dark"%> <br></br>
-                <%=link_to "Add Movies", new_movie_ticket_path, class:"btn btn-dark"%><br></br>
-                <%=link_to "Shows", shows_path, class:"btn btn-dark"%>  <br></br>
-                <%= link_to "Theatres", theatres_path, class: "btn btn-dark" %><br></br>
-                <%= link_to "Locations", locations_path, class: "btn btn-dark" %> <br></br> 
-                <%=link_to "Add admin users", admin_users_path, class:"btn btn-dark"%>
-                <%= button_to "LOGOUT",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%> <br> <br/> 
-              </div>
-            </div>
+            <div class="sidebar">
+            <i class="fa fa-fw fa-home" style = "color:white"></i><br>
+            <%=link_to "Movies", admins_movie_tickets_path, class:"btn btn-dark"%> <br></br>
+            <%=link_to "Add Movies", admins_new_movie_tickets_path, class:"btn btn-dark"%><br></br>
+            <%=link_to "Shows", admins_shows_path, class:"btn btn-dark"%>  <br></br>
+            <%= link_to "Theatres", admins_theatres_path, class: "btn btn-dark" %><br></br>
+            <%= link_to "Locations", admins_locations_path, class: "btn btn-dark" %> <br></br> 
+            <%=link_to "Add admin users", admin_users_path, class:"btn btn-dark"%>
+            <a><i class="fa fa-sign-out" style = "color:white"></i><br><%= button_to "LOGOUT",destroy_admin_session_path, method: :delete, class:"btn btn-dark"%> </a> <br> <br/> 
+        </div>
+        <div class="main">
+          <h2>Welcome superadmin</h2>
+          <p>About</p>
+          <p></p>
+          <p>.</p>
+        </div>
+      </div>
           <%end%>
         <%else%>
         <div class= "main-page" style = "margin-left:900px;">

@@ -1,0 +1,28 @@
+<div id="<%= dom_id payment %>", class = "history">
+  <p>
+    <strong>code:</strong>
+    <%= payment.code %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= payment.user.name %>
+  </p>
+
+
+  <p>
+    <strong>Movie Ticket:</strong>
+    <%= payment.movie_ticket.movie_name %>
+  </p>
+
+  <p>
+    <strong>seat:</strong>
+    <%= payment.seat.number %>
+  </p>
+
+  <p>
+  <strong>Total:</strong>
+  <%= payment.total_amount %>
+</p>
+
+</div>

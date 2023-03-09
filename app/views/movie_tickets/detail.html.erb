@@ -11,6 +11,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle btn btn-light" data-bs-toggle = "dropdown" style= "margin-inline-end: 20px;">Profile</a>
         <div class="dropdown-menu dropdown-menu-end">
+        <a class="dropdown-item"><%= link_to "history", payments_path, class:"btn bg-transparent" %></a>
           <a href="http://localhost:3000/users/edit" class="dropdown-item">edit</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
@@ -25,9 +26,9 @@
     <h4> Name :  <%= current_user.name %> </h4>
     <h4> Phone_number : <%= current_user.phone_number %> </h4> 
   <% end %> 
-
+  <p>Total Price: <%= number_to_currency(@movie_ticket.unavailable_seats.sum(:price)) %></p>
   <div>
-  <%= link_to "Back to movie tickets", movie_tickets_path, class: "btn btn-dark" %> |
-  <%= link_to "Checkout" %>
+  <%= link_to "Back to movie tickets", users_movie_tickets_path, class: "btn btn-dark" %> |
+  <%= link_to "payment", new_payment_path, class: "btn btn-dark"  %>
 </div>
 </div>  
