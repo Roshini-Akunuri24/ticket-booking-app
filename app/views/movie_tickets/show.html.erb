@@ -18,8 +18,10 @@
             <a href="http://localhost:3000/users/edit" class="dropdown-item">edit</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
-          <% else %>
-            <a class="dropdown-item"><%=link_to "login",new_user_session_path, class:"btn bg-transparent"%></a>
+          <% elsif admin_signed_in? %>
+            <a class="dropdown-item"><%=button_to "logout",destroy_admin_session_path, method: :delete, class:"btn bg-transparent"%></a>
+          <% else %> 
+          <a class="dropdown-item"><%=link_to "login",new_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
           <% end %>
         </div>
       </li>

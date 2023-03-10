@@ -24,7 +24,7 @@ class PaymentsController < ApplicationController
       def share_payment
         @payments = Payment.find(params[:id])
         # recipient_email = params[:recipient_email]
-        recipient_email = "ankunuri.roshini@gmail.com"
+        recipient_email = "ramyalatha0007@gmail.com"
         PaymentMailer.share_payment(@payments, recipient_email).deliver_now
         redirect_to payments_path, notice: " details sent to #{recipient_email} successfully."
       end

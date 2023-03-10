@@ -31,14 +31,43 @@
             </div>
             <div class="main">
               <h2>Welcome Admin</h2>
-              <p></p>
-              <p></p>
-              <p></p>
+              <section class="statis mt-4 text-center">
+                <div class="row">
+                  <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="box bg-primary p-3">
+                      <i class="uil-eye"></i>
+                      <h3 style = "margin-top:50px">10</h3>
+                      <p class="view"> views</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="box bg-danger p-3">
+                      <i class="uil-user"></i>
+                      <h3 style = "margin-top:50px">03</h3>
+                      <p class="view">User registered</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                    <div class="box bg-warning p-3">
+                      <i class="uil-shopping-cart"></i>
+                      <h3 style = "margin-top:50px">08</h3>
+                      <p class="view">Movies Released</p>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-lg-3">
+                    <div class="box bg-success p-3">
+                      <i class="uil-feedback"></i>
+                      <h3 style = "margin-top:50px">05</h3>
+                      <p class="view">Transactions</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
           </div>
-          <% end %>
-          <%if current_admin.role=="super_user"%>
-            <div class="sidebar">
+        <% end %>
+        <%if current_admin.role=="super_user"%>
+          <div class="sidebar">
             <i class="fa fa-fw fa-home" style = "color:white"></i><br>
             <%=link_to "Movies", admins_movie_tickets_path, class:"btn btn-dark"%> <br></br>
             <%=link_to "Add Movies", admins_new_movie_tickets_path, class:"btn btn-dark"%><br></br>
@@ -47,15 +76,44 @@
             <%= link_to "Locations", admins_locations_path, class: "btn btn-dark" %> <br></br> 
             <%=link_to "Add admin users", admin_users_path, class:"btn btn-dark"%>
             <a><i class="fa fa-sign-out" style = "color:white"></i><br><%= button_to "LOGOUT",destroy_admin_session_path, method: :delete, class:"btn btn-dark"%> </a> <br> <br/> 
-        </div>
-        <div class="main">
-          <h2>Welcome superadmin</h2>
-          <p>About</p>
-          <p></p>
-          <p>.</p>
-        </div>
-      </div>
-          <%end%>
+          </div>
+          <div class="main">
+            <h2>Welcome superadmin</h2>
+            <section class="statis mt-4 text-center">
+              <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                  <div class="box bg-primary p-3">
+                    <i class="uil-eye"></i>
+                    <h3 style = "margin-top:50px">10</h3>
+                    <p class="view"> views</p>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                  <div class="box bg-danger p-3">
+                    <i class="uil-user"></i>
+                    <h3 style = "margin-top:50px">3</h3>
+                    <p class="view">User registered</p>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                  <div class="box bg-warning p-3">
+                    <i class="uil-shopping-cart"></i>
+                    <h3 style = "margin-top:50px">08</h3>
+                    <p class="view">Movies Released</p>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                  <div class="box bg-success p-3">
+                    <i class="uil-feedback"></i>
+                    <h3 style = "margin-top:50px">05</h3>
+                    <p class="view">Transactions</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            </div>
+          </div>
+        <%end%>
         <%else%>
         <div class= "main-page" style = "margin-left:900px;">
           <li class="active"><a href="#"> <%=link_to "Sign In", new_user_session_path%></a></li>

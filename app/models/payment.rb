@@ -1,8 +1,10 @@
 class Payment < ApplicationRecord 
-
   belongs_to :user
   belongs_to :movie_ticket    
   belongs_to :seat
+
+  def process 
+  end
 
   # def share_payment
   #   @payment = Payment.find(params[:id])
