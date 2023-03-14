@@ -144,6 +144,8 @@ header{
 
 .table{
   width: 100vw;
+  margin-left: 250px;
+  margin-top: 50px;
 }
 
  .movie-show{
@@ -194,7 +196,37 @@ header{
   margin-top: 50px;
 }
 
+.sidebar-movie_index{
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: -50px;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+  margin-top: 115px;
+}
 
+.movie_show{
+  margin-left: 550px;
+}
 
+.show_style{
+  margin-left: 250px;
+}
 
-
+.unavailable-seat {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}

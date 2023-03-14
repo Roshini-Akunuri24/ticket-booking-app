@@ -53,13 +53,13 @@
       <% end %>
     </div>  
     <br>
-    
-    <div class = "seats-booked">
-      <h6> Seats Booked </h6>
-      <% @movie_ticket.unavailable_seats.each do |seat| %>
-        <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "unavailable-seat", class: "btn btn-success"%>
-      <% end %> 
-    </div>
+
+      <div class = "seats-booked">
+        <h6> Seats Booked </h6>
+        <% @movie_ticket.unavailable_seats.each do |seat| %>
+          <button class="unavailable-seat"> <%= "Seat #{seat.number}"%></button>
+        <% end %> 
+      </div>
   
   <% end %>
 
@@ -70,10 +70,21 @@
       <%= link_to "Details", movie_ticket_detail_path(@movie_ticket),method: :get,class: "btn btn-dark"%>
       
     <% elsif current_admin %>
+    <div class="sidebar-movie_index">
+      <i class="fa fa-fw fa-home" style = "color:white"></i><br>
+      <%=link_to "Movies", admins_movie_tickets_path, class:"btn btn-dark"%> <br></br>
+      <%=link_to "Add Movies", admins_new_movie_tickets_path, class:"btn btn-dark"%><br></br>
+      <%=link_to "Shows", admins_shows_path, class:"btn btn-dark"%>  <br></br>
+      <%= link_to "Theatres", admins_theatres_path, class: "btn btn-dark" %><br></br>
+      <%= link_to "Locations", admins_locations_path, class: "btn btn-dark" %> <br></br> 
+      <a><i class="fa fa-sign-out" style = "color:white"></i><br><%= button_to "LOGOUT",destroy_admin_session_path, method: :delete, class:"btn btn-dark"%> </a> <br> <br/> 
+    </div>
+    <div class = "movie_show">
       <%= render @movie_ticket %>
       <%= link_to "Edit this movie_ticket", edit_movie_ticket_path(@movie_ticket), class: "btn btn-dark" %> <br> <br/>
       <%= link_to "Back to movie_tickets", admins_movie_tickets_path, class: "btn btn-dark" %> <br> <br/>
       <%= button_to "Destroy this ticket", @movie_ticket, method: :delete, class: "btn btn-dark" %>
+    </div>
     <% else %>
       <div class = "movie-show">
         <%= render @movie_ticket %>
@@ -99,7 +110,7 @@
       <div class = "seats-booked">
         <h6> Seats Booked </h6>
         <% @movie_ticket.unavailable_seats.each do |seat| %>
-          <%= link_to "Seat #{seat.number}", movie_ticket_seat_path(@movie_ticket, seat), method: :put, class: "unavailable-seat", class: "btn btn-success"%>
+          <button class="unavailable-seat"> <%= "Seat #{seat.number}"%></button>
         <% end %> 
       </div>
       <p>Total Price: <%= number_to_currency(@movie_ticket.total_price) %></p>

@@ -28,7 +28,15 @@
     </ul>                    
   </nav>
 </div>
-
+<div class="sidebar-movie_index">
+      <i class="fa fa-fw fa-home" style = "color:white"></i><br>
+      <%=link_to "Movies", admins_movie_tickets_path, class:"btn btn-dark"%> <br></br>
+      <%=link_to "Add Movies", admins_new_movie_tickets_path, class:"btn btn-dark"%><br></br>
+      <%=link_to "Shows", admins_shows_path, class:"btn btn-dark"%>  <br></br>
+      <%= link_to "Theatres", admins_theatres_path, class: "btn btn-dark" %><br></br>
+      <%= link_to "Locations", admins_locations_path, class: "btn btn-dark" %> <br></br> 
+      <a><i class="fa fa-sign-out" style = "color:white"></i><br><%= button_to "LOGOUT",destroy_admin_session_path, method: :delete, class:"btn btn-dark"%> </a> <br> <br/> 
+    </div>
   <div class = "text-center">
     <h1>New movie ticket</h1>
 

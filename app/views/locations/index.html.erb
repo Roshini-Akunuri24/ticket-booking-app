@@ -13,16 +13,32 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle btn btn-light" data-bs-toggle = "dropdown" style= "margin-inline-end: 20px;">Profile</a>
         <div class="dropdown-menu dropdown-menu-end">
-        <a class="dropdown-item"><%= link_to "history", payments_path, class:"btn bg-transparent" %></a>
+        <% if user_signed_in? %>
+          <a class="dropdown-item"><%= link_to "history", payments_path, class:"btn bg-transparent" %></a>
           <a href="http://localhost:3000/users/edit" class="dropdown-item">edit</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item"><%=button_to "logout",destroy_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
-        </div>
+        <% elsif admin_signed_in? %>
+          <a class="dropdown-item"><%=button_to "logout",destroy_admin_session_path, method: :delete, class:"btn bg-transparent"%></a>
+        <% else %> 
+          <a class="dropdown-item"><%=link_to "login",new_user_session_path, method: :delete, class:"btn bg-transparent"%></a>
+        <% end %>
+      </div>
       </li>
     </ul>                    
   </nav>
 </div>
-<h2 >Locations</h2>
+
+<div class="sidebar-movie_index">
+  <i class="fa fa-fw fa-home" style = "color:white"></i><br>
+  <%=link_to "Movies", admins_movie_tickets_path, class:"btn btn-dark"%> <br></br>
+  <%=link_to "Add Movies", admins_new_movie_tickets_path, class:"btn btn-dark"%><br></br>
+  <%=link_to "Shows", admins_shows_path, class:"btn btn-dark"%>  <br></br>
+  <%= link_to "Theatres", admins_theatres_path, class: "btn btn-dark" %><br></br>
+  <%= link_to "Locations", admins_locations_path, class: "btn btn-dark" %> <br></br> 
+  <a><i class="fa fa-sign-out" style = "color:white"></i><br><%= button_to "LOGOUT",destroy_admin_session_path, method: :delete, class:"btn btn-dark"%> </a> <br> <br/> 
+</div>
+
   <table class="table"> 
     <thead>
       <tr>
@@ -43,6 +59,8 @@
       <% end %>
     </tbody>
   </table>
-<% if current_admin.role == 'admin' || current_admin.role == 'super_user' %>
-  <%= link_to "Add location", admins_new_locations_path, class: "btn btn-dark" %> 
-<% end %>
+<div class = "show_style">
+  <% if current_admin.role == 'admin' || current_admin.role == 'super_user' %>
+    <%= link_to "Add location", admins_new_locations_path, class: "btn btn-dark" %> 
+  <% end %>
+</div>

@@ -16,4 +16,9 @@
 </div>
 <%= render @payment %>
 
-<%= link_to 'Share', payment_share_payment_path(@payment), method: :get %><br> </br>
+<%= form_with url: payment_share_payment_path, method: :get do |form| %>
+  <%= form.label :recipient_email %>
+  <%= form.email_field :recipient_email %>
+  <%= form.submit "Share",  class: "btn btn-dark" %>
+<% end %>
+
